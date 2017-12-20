@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/','SitesController@index');
+
+Route::get('/about', function(){
+    return 'I am Lpf';
 });
+
+Route::get('/home','SitesController@home');
+Route::get('contact','SitesController@contact');
