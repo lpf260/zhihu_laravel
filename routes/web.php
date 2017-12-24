@@ -18,4 +18,14 @@ Route::get('/about', function(){
 });
 
 Route::get('/home','SitesController@home');
-Route::get('contact','SitesController@contact');
+Route::get('/contact','SitesController@contact');
+
+Route::get('/articles','ArticlesController@index');
+
+//创建文章
+Route::get('/articles/create','ArticlesController@create');
+
+
+//文章详情页
+Route::get('/articles/{id}','ArticlesController@show');
+
