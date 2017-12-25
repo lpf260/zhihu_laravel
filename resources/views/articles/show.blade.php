@@ -8,5 +8,7 @@
             <div clss="body">
                 {{ $article->content }}
             </div>
+            <hr/>
+            <span class="pull-right">发表时间：{{ $article->published_at }}</span>
     </article>
 @stop

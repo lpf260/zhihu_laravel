@@ -29,3 +29,5 @@ Route::get('/articles/create','ArticlesController@create');
 //文章详情页
 Route::get('/articles/{id}','ArticlesController@show');
 
+//发表文章
+Route::post('/articles','ArticlesController@store');

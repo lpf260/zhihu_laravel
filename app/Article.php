@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -13,4 +14,19 @@ class Article extends Model
 
      */
     protected $fillable = ['title','content','published_at'];
+
+    protected $dates = ['published_at']; //将published_at转化为Carbon对象
+
+    //set Attribute预处理 保存到数据库前进行预处理 set+字段名+Attribute
+    public function setPublishedAtAttribute($date)
+    {
+        //这个会将日期转换成带时分秒的
+        $this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d',$date);
+    }
+
+    //scope+方法名字驼峰命名法
+    public function scopePublished($query)
+    {
+        $query->where('published_at','<=',Carbon::now());
+    }
 }
